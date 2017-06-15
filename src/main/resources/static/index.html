@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Простой чат</title>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.10/semantic.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sockjs-client/0.3.4/sockjs.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
+    <script src="js/scripts.js"></script>
+</head>
+<body>
+
+<div>
+    <div>
+        <button class="ui green basic button" id="connect" onclick="connect();">Подключиться</button>
+        <button class="ui red basic button" id="disconnect" onclick="disconnect();">Отключиться
+        </button>
+    </div>
+    <div>
+        <div class="ui input">
+            <label for="msg">Ваше сообщение</label><input id="msg"/>
+        </div>
+        <button class="ui blue basic button" onclick="sendMsg();">Отправить</button>
+
+        <div>
+            Идентификатор чата: <a class="ui teal ribbon label" id="guid"></a>
+        </div>
+        <div class="ui comments" id="chat">
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
