@@ -1,9 +1,16 @@
 var stompClient = null;
 
+function setConnected(connected) {
+    document.getElementById('connect').disabled = connected;
+    document.getElementById('disconnect').disabled = !connected;
+    document.getElementById('chat').innerHTML = '';
+}
+
 function connect() {
     var socket = new SockJS('/chat');
     stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
+        setConnected(true);
         console.log('Connected: ' + frame);
         stompClient.subscribe('/topic/messages', function (msg) {
             showGreeting(JSON.parse(msg.body));
@@ -13,6 +20,7 @@ function connect() {
 
 function disconnect() {
     stompClient.disconnect();
+    setConnected(false);
     console.log('Disconnected');
 }
 

@@ -12,25 +12,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/stomp.js/2.3.3/stomp.min.js"></script>
     <script src="js/scripts.js"></script>
 </head>
-<body>
+<body style="max-width: 50%; margin: 0 auto">
 
-<div>
-    <div>
+<div class="ui segments">
+    <div class="ui segment">
         <button class="ui green basic button" id="connect" onclick="connect();">Подключиться</button>
-        <button class="ui red basic button" id="disconnect" onclick="disconnect();">Отключиться
+        <button class="ui red basic button" id="disconnect" onclick="disconnect();" disabled>Отключиться
         </button>
     </div>
-    <div>
-        <div class="ui input">
-            <label for="msg">Ваше сообщение</label><input id="msg"/>
+    <div class="ui segment">
+        <div class="ui form">
+            <div class="inline fields">
+                <div class="eight field">
+                    <label for="msg">Ваше сообщение</label><input id="msg"/>
+                </div>
+                <button class="ui blue basic button" onclick="sendMsg();">Отправить</button>
+            </div>
         </div>
-        <button class="ui blue basic button" onclick="sendMsg();">Отправить</button>
-
-        <div>
-            Идентификатор чата: <a class="ui teal ribbon label" id="guid"></a>
-        </div>
-        <div class="ui comments" id="chat">
-        </div>
+    </div>
+    <div class="ui segment">
+        <a class="ui teal ribbon label">Идентификатор чата: <span id="guid"></span></a>
+        <div class="ui comments" id="chat"></div>
     </div>
 </div>
 
