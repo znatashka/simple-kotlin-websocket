@@ -41,6 +41,9 @@ function showGreeting(message) {
     divComment.classList.add('comment');
     var divContent = document.createElement('div');
     divContent.classList.add('content');
+    var aAuthor = document.createElement('a');
+    aAuthor.classList.add('author');
+    aAuthor.innerHTML = message.user;
     var divMeta = document.createElement('div');
     divMeta.classList.add('metadata');
     var divText = document.createElement('div');
@@ -49,6 +52,7 @@ function showGreeting(message) {
     spanDate.innerHTML = message.date;
     divMeta.appendChild(spanDate);
     divText.appendChild(document.createTextNode(message.text));
+    divContent.appendChild(aAuthor);
     divContent.appendChild(divMeta);
     divContent.appendChild(divText);
     divComment.appendChild(divContent);

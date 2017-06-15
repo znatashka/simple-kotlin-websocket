@@ -17,12 +17,21 @@ class ChatController {
 
     @MessageMapping("/chat")
     @SendTo("/topic/messages")
-    fun greeting(text: String): Message {
+    fun chat(text: String): Message {
 
         if (!redisTemplate.hasKey("chat")) redisTemplate.opsForValue().set("chat", Chat(RandomStringUtils.random(6, true, true).toUpperCase()))
 
         val chat = redisTemplate.opsForValue().get("chat")
-        val message = Message(chat.guid, text, SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(Date()))
+        val user = RandomStringUtils.random(6, true, false).toLowerCase().capitalize()
+
+        val message = Message(
+                chat.guid,
+                user,
+                text,
+                SimpleDateFormat("dd.MM.yyyy HH:mm:ss").format(Date())
+        )
+
+        chat.users.add(user)
         chat.messages.add(message)
 
         redisTemplate.opsForValue().set("chat", chat)
