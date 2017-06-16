@@ -32,30 +32,15 @@ function sendMsg() {
 function showGreeting(message) {
     document.getElementById("guid").innerHTML = message.chat;
 
-    var chat = document.getElementById('chat');
-    // var p = document.createElement('p');
-    // p.style.wordWrap = 'break-word';
-    // p.appendChild(document.createTextNode('(' + message.date + '): ' + message.text));
+    var str = '<div class="comment">' +
+        '    <div class="content">' +
+        '      <a class="author">' + message.user + '</a>' +
+        '      <div class="metadata">' +
+        '        <span class="date">' + message.date + '</span>' +
+        '      </div>' +
+        '      <div class="text">' + message.text + '</div>' +
+        '    </div>' +
+        '  </div>';
 
-    var divComment = document.createElement('div');
-    divComment.classList.add('comment');
-    var divContent = document.createElement('div');
-    divContent.classList.add('content');
-    var aAuthor = document.createElement('a');
-    aAuthor.classList.add('author');
-    aAuthor.innerHTML = message.user;
-    var divMeta = document.createElement('div');
-    divMeta.classList.add('metadata');
-    var divText = document.createElement('div');
-    divText.classList.add('text');
-    var spanDate = document.createElement('span');
-    spanDate.innerHTML = message.date;
-    divMeta.appendChild(spanDate);
-    divText.appendChild(document.createTextNode(message.text));
-    divContent.appendChild(aAuthor);
-    divContent.appendChild(divMeta);
-    divContent.appendChild(divText);
-    divComment.appendChild(divContent);
-
-    chat.appendChild(divComment);
+    document.getElementById('chat').insertAdjacentHTML('beforeend', str);
 }
